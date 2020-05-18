@@ -1,4 +1,6 @@
+import requests
 from django.shortcuts import render
+from bs4 import BeautifulSoup
 
 
 # Create your views here.
@@ -7,4 +9,6 @@ def homepage(request):
 
 
 def new_search(request):
-    return render(request, 'afscrapper/new_search.html')
+    search = request.POST.get("search-term")
+    search_term = {'search_term': search}
+    return render(request, 'afscrapper/new_search.html', search_term)
