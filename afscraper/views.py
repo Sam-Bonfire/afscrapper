@@ -16,7 +16,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko
 
 # Create your views here.
 def homepage(request):
-    return render(request, 'afscrapper/index.html')
+    return render(request, 'afscraper/index.html')
 
 
 def new_search(request):
@@ -46,7 +46,7 @@ def new_search(request):
                 'https://www.chillinoodle.co.uk/skin/frontend/chillinoodle/default/images/catalog/product/placeholder/image.jpg')
 
         if link is not None:  # product.2
-            product.append(link['href'])
+            product.append('https://amazon.in/'+link['href'])
         else:
             product.append('amazon.in')
 
@@ -56,4 +56,4 @@ def new_search(request):
             product.append('NA')
         final_posting.append(product)
     frontend_package = {'search_term': search, 'final_posting': final_posting[1:]}
-    return render(request, 'afscrapper/new_search.html', frontend_package)
+    return render(request, 'afscraper/new_search.html', frontend_package)

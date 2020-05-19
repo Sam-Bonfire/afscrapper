@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'afscrapper.apps.AfscrapperConfig',
+    'afscraper.apps.AfscrapperConfig',
 ]
 
 MIDDLEWARE = [

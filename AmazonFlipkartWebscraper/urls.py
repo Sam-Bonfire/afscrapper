@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('afscrapper.urls'), name='home'),
+    path('', include('afscraper.urls'), name='home'),
     path('admin/', admin.site.urls),
 ]
