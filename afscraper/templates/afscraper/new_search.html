@@ -1,0 +1,25 @@
+{% extends 'afscraper/index.html' %}
+
+{% block search %}
+    {% if search_term %}
+        <h2 style="text-align: center">{{ search_term | title }}</h2>
+    {% endif %}
+
+    <div class="row">
+        {% for posting in final_posting %}
+            <div class="col s4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{ posting.1 }}">
+                    </div>
+                    <div class="card-title">
+                        <span class="card-title">{{ posting.0 }}</span>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ posting.2 }}">Price: {{ posting.3 }}</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

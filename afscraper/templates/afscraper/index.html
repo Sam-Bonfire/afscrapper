@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'afscraper/style.css' %}">
+    <meta charset="UTF-8">
+    <title>AF Web-Scraper</title>
+</head>
+<body>
+<nav>
+    <div class="container nav-wrapper">
+        <a href="/" class="brand-logo">Amazon Flipkart Web-Scraper</a>
+        <ul class="right" id="nav-mobile">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h1 class="text-center">What do you want to buy today?</h1>
+    <div class="row">
+        <div class="col s4">
+            <div class="center">
+                <i class="large material-icons" style="color: orange">flash_on</i>
+                <p>Fast Amazon/Flipkart Web-Scraper</p>
+                <p class="light center">Scrape across Amazon and Flipkart with a beautiful GUI</p>
+            </div>
+        </div>
+
+        <div class="col s4">
+            <div class="center">
+                <i class="large material-icons" style="color: indigo">camera</i>
+                <p>One stop shop</p>
+                <p class="light center">One place to search across Amazon and Flipkart</p>
+            </div>
+        </div>
+
+        <div class="col s4">
+            <div class="center">
+                <i class="large material-icons" style="color: blue">get_app</i>
+                <p>Extensible</p>
+                <p class="light center">More Features and providers coming soon</p>
+            </div>
+        </div>
+    </div>
+
+
+    <form action="{% url 'new_search' %}" method='POST'>
+        {% csrf_token %}
+        <input type="text" name="search-term" placeholder="Search">
+        <button class="btn waves-effect waves-light red lighten-1" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+    {% block search %}
+    {% endblock search %}
+</div>
+</body>
+</html>
