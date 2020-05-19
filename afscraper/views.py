@@ -14,7 +14,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko
 
 AMAZON = {
     'BASE_SEARCH_URL': 'https://www.amazon.in/s?k=',
-    'BASE_PRODUCT_URL': 'https://www.amazon.in',
+    'BASE_PRODUCT_URL': 'https://www.amazon.in/',
     'PRODUCT_LISTING_CLASS': 'sg-col-4-of-12 sg-col-8-of-16 sg-col-16-of-24 sg-col-12-of-20 sg-col-24-of-32 sg-col sg-col-28-of-36 sg-col-20-of-28',
     'PRODUCT_TITLE_CLASS': 'a-size-medium a-color-base a-text-normal',
     'PRODUCT_LINK_CLASS': 'a-link-normal a-text-normal',
@@ -29,7 +29,7 @@ def homepage(request):
 def new_search(request):
     search = request.POST.get("search-term")
     models.Search.objects.create(search=search)
-    response_amazon = requests.get(AMAZON['BASE_PRODUCT_URL'] + requote_uri(search), headers=headers)
+    response_amazon = requests.get(AMAZON['BASE_SEARCH_URL'] + requote_uri(search), headers=headers)
     amazon_soup = BeautifulSoup(response_amazon.content, features='html.parser')
     posting = []
     for item in amazon_soup.findAll('div', attrs={'class': AMAZON['PRODUCT_LISTING_CLASS']}):
